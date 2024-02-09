@@ -1,6 +1,11 @@
 import express from "express";
-import { userRegistration, userLogin } from "../controller/users";
+import {
+  userRegistration,
+  userLogin,
+  tokenValidation,
+} from "../controller/users";
 import { check } from "express-validator";
+import { verifyToken } from "../middlewares/verifyToken";
 const router = express.Router();
 
 /*   /api/users/register                                   */
@@ -27,5 +32,7 @@ router.post(
   ],
   userLogin
 );
+
+router.get("/validate-token", verifyToken, tokenValidation);
 
 export default router;
