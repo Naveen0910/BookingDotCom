@@ -3,6 +3,7 @@ import {
   userRegistration,
   userLogin,
   tokenValidation,
+  userLogout,
 } from "../controller/users";
 import { check } from "express-validator";
 import { verifyToken } from "../middlewares/verifyToken";
@@ -34,5 +35,7 @@ router.post(
 );
 
 router.get("/validate-token", verifyToken, tokenValidation);
+
+router.post("/logout", userLogout);
 
 export default router;

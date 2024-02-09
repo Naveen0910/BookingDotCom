@@ -75,3 +75,10 @@ export const userLogin = async (req: Request, res: Response) => {
 export const tokenValidation = async (req: Request, res: Response) => {
   res.status(200).send({ userId: req.userId });
 };
+
+export const userLogout = async (req: Request, res: Response) => {
+  res.cookie("authCookie", "", {
+    expires: new Date(0),
+  });
+  res.send();
+};
