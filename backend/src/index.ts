@@ -5,7 +5,14 @@ import mongoose from "mongoose";
 import userRoutes from "./routes/users";
 import cookieParser from "cookie-parser";
 
-mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string);
+mongoose
+  .connect(process.env.MONGODB_CONNECTION_STRING as string)
+  .then(() =>
+    console.log(
+      "connected to data base: ",
+      process.env.MONGODB_CONNECTION_STRING
+    )
+  );
 
 const app = express();
 
