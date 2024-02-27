@@ -18,3 +18,8 @@ backend/.env
 
 # Ignore log files
 *.log
+
+.env.e2e
+.env
+.vscode
+dist
