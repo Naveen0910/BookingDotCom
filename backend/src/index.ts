@@ -4,6 +4,7 @@ import "dotenv/config"; //loading env variables
 import mongoose from "mongoose";
 import userRoutes from "./routes/users";
 import cookieParser from "cookie-parser";
+import path = require("path");
 
 mongoose
   .connect(process.env.MONGODB_CONNECTION_STRING as string)
@@ -21,6 +22,8 @@ app.use(express.urlencoded({ extended: true })); // helps us in parsing URL
 app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true })); //enables allows cross origin resource sharing
 app.use(cookieParser());
 // integreating routes with server instance
+
+app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 app.use("/api/users", userRoutes);
 
 // // example

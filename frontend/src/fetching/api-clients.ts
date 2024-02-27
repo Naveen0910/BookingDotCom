@@ -1,6 +1,6 @@
 import { RegisterFormData } from "../pages/Register";
 import { SignInFormData } from "../pages/SignIn";
-const DEV_BASE_URL = "http://localhost:7000";
+const DEV_BASE_URL = import.meta.env.VITE_DEV_BASE_URL || "";
 const baseURL = DEV_BASE_URL;
 
 export const register = async (formData: RegisterFormData) => {
